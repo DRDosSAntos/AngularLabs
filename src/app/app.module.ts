@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import {ContactNamePipe} from './pipes/contact-name.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactNamePipe
   ],
   imports: [
     BrowserModule, FormsModule
