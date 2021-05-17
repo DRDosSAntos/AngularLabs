@@ -1,5 +1,9 @@
-<div class="jumbotron">Hello {{name}}</div>
+<div class="app-root-container">
+<div class="jumbotron">Sup {{name}}</div>
 
+<!--<div class="rowfield" style="width:100px;height:100px;">Test</div>-->
+
+<!--<app-scopetest></app-scopetest>-->
 <table class="table">
   <tr>
     <th>Name</th>
@@ -16,17 +20,25 @@
   </tr>
 </table>
 
-<form (ngSubmit)="addContact()">
+<form (ngSubmit)="addContact()" #addContactForm="ngForm">
   <label for="inputFirstName">First name:</label>
   <input type="text" [(ngModel)]="newContact.firstName" name="firstName"
-         id="inputFirstName" class="form-control">
+         id="inputFirstName" class="form-control" required>
   <label for="inputSurname">Surname:</label>
   <input type="text" [(ngModel)]="newContact.surname" name="surname"
-         id="inputSurname" class="form-control">
+         id="inputSurname" class="form-control" required>
   <label for="inputEmail">E-mail address:</label>
-  <input type="text" [(ngModel)]="newContact.email" name="email" id="inputEmail"
-         class="form-control">
-  <button class="btn btn-primary">Add</button>
+  <input type="email"
+         required
+         pattern=".+@.+\.nl"
+         name="email"
+         id="inputEmail"
+         class="form-control"
+         [(ngModel)]="newContact.email"
+         #email="ngModel">
+  <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>
 </form>
+</div>
+
 
 

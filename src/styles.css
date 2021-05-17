@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background: greenyellow;
+  margin: 100px 20% 0 20%;
+  alignment: center;
+}
+
+input{
+  border-radius: 10px;
+}
+
+input.ng-touched.ng-valid{
+  border-color: limegreen;
+  background-color: mediumspringgreen;
+}
+
+input.ng-touched.ng-invalid{
+  border-color: red;
+  background-color: indianred;
+}
