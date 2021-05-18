@@ -5,12 +5,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import {ContactNamePipe} from './pipes/contact-name.pipe';
 import { ScopetestComponent } from './scopetest/scopetest.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactNamePipe,
-    ScopetestComponent
+    ScopetestComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,

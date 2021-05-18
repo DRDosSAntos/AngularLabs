@@ -20,23 +20,25 @@
   </tr>
 </table>
 
-<form (ngSubmit)="addContact()" [formGroup]="addContactForm">
-  <label for="inputFirstName">Firstname:</label>
-  <input type="text" name="firstName"
-         id="inputFirstName" class="form-control" formControlName="firstName">
-  <label for="inputSurname"> Surname:</label>
-  <input type="text" name="surname"
-         id="inputSurname" class="form-control" formControlName="surname">
-  <label for="inputEmail"> E-mail address:</label>
-  <input type="email" name="email"
-         id="inputEmail" class="form-control" formControlName="email">
+<app-contact-form (add)="addContact($event)"></app-contact-form>
 
-  <div *ngIf="addContactForm.get('firstName').errors?.required" >Please enter your firstname </div>
-  <div *ngIf="addContactForm.get('surname').errors?.required" >Please enter your surname </div>
-  <div *ngIf="addContactForm.get('email').errors?.required" >Please enter your e-mail address </div>
+<!--<form (ngSubmit)="addContact()" [formGroup]="addContactForm">-->
+<!--  <label for="inputFirstName">Firstname:</label>-->
+<!--  <input type="text" name="firstName"-->
+<!--         id="inputFirstName" class="form-control" formControlName="firstName">-->
+<!--  <label for="inputSurname"> Surname:</label>-->
+<!--  <input type="text" name="surname"-->
+<!--         id="inputSurname" class="form-control" formControlName="surname">-->
+<!--  <label for="inputEmail"> E-mail address:</label>-->
+<!--  <input type="email" name="email"-->
+<!--         id="inputEmail" class="form-control" formControlName="email">-->
 
-  <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>
-</form>
+<!--  <div *ngIf="addContactForm.get('firstName').errors?.required" >Please enter your firstname </div>-->
+<!--  <div *ngIf="addContactForm.get('surname').errors?.required" >Please enter your surname </div>-->
+<!--  <div *ngIf="addContactForm.get('email').errors?.required" >Please enter your e-mail address </div>-->
+
+<!--  <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>-->
+<!--</form>-->
 
 
 
