@@ -1,5 +1,6 @@
 import {Contact} from './models/contact';
 import {Component} from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,17 @@ import {Component} from '@angular/core';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
+
   name: string;
+  addContactForm: FormGroup;
 
   constructor() {
     this.name = 'Human!';
+    this.addContactForm = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      surname: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), Validators.required])
+    });
   }
 
   contacts: Contact[] = [
@@ -20,10 +28,14 @@ export class AppComponent {
   ];
   newContact = {} as Contact;
 
-  addContact(): void {
-    this.contacts.push(this.newContact);
+  // tslint:disable-next-line:typedef
+  addContact(){
+    this.contacts.push(this.addContactForm.value);
+    console.log('Submitted value:', this.addContactForm.value);
   }
 }
+
+
 
 
 

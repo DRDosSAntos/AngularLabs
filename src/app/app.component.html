@@ -20,26 +20,20 @@
   </tr>
 </table>
 
-<form (ngSubmit)="addContact()" #addContactForm="ngForm">
-  <label for="inputFirstName">First name:</label>
-  <input type="text" required [(ngModel)]="newContact.firstName" name="firstName"
-         id="inputFirstName" class="form-control" #firstname="ngModel">
+<form (ngSubmit)="addContact()" [formGroup]="addContactForm">
+  <label for="inputFirstName">Firstname:</label>
+  <input type="text" name="firstName"
+         id="inputFirstName" class="form-control" formControlName="firstName">
   <label for="inputSurname"> Surname:</label>
-  <input type="text" required [(ngModel)]="newContact.surname" name="surname"
-         id="inputSurname" class="form-control" #surname="ngModel">
+  <input type="text" name="surname"
+         id="inputSurname" class="form-control" formControlName="surname">
   <label for="inputEmail"> E-mail address:</label>
-  <input type="email"
-         required
-         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-         name="email"
-         id="inputEmail"
-         class="form-control"
-         [(ngModel)]="newContact.email"
-         #email="ngModel">
+  <input type="email" name="email"
+         id="inputEmail" class="form-control" formControlName="email">
 
-  <div *ngIf="firstname.errors?.required" >Please enter your firstname </div>
-  <div *ngIf="surname.errors?.required" >Please enter your surname </div>
-  <div *ngIf="email.errors?.required" >Please enter your e-mail address </div>
+  <div *ngIf="addContactForm.get('firstName').errors?.required" >Please enter your firstname </div>
+  <div *ngIf="addContactForm.get('surname').errors?.required" >Please enter your surname </div>
+  <div *ngIf="addContactForm.get('email').errors?.required" >Please enter your e-mail address </div>
 
   <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>
 </form>
