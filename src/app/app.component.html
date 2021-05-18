@@ -1,5 +1,5 @@
-<div class="app-root-container">
-<div class="jumbotron">Sup {{name}}</div>
+
+<div class="jumbotron">Greetings {{name}}</div>
 
 <!--<div class="rowfield" style="width:100px;height:100px;">Test</div>-->
 
@@ -22,23 +22,28 @@
 
 <form (ngSubmit)="addContact()" #addContactForm="ngForm">
   <label for="inputFirstName">First name:</label>
-  <input type="text" [(ngModel)]="newContact.firstName" name="firstName"
-         id="inputFirstName" class="form-control" required>
-  <label for="inputSurname">Surname:</label>
-  <input type="text" [(ngModel)]="newContact.surname" name="surname"
-         id="inputSurname" class="form-control" required>
-  <label for="inputEmail">E-mail address:</label>
+  <input type="text" required [(ngModel)]="newContact.firstName" name="firstName"
+         id="inputFirstName" class="form-control" #firstname="ngModel">
+  <label for="inputSurname"> Surname:</label>
+  <input type="text" required [(ngModel)]="newContact.surname" name="surname"
+         id="inputSurname" class="form-control" #surname="ngModel">
+  <label for="inputEmail"> E-mail address:</label>
   <input type="email"
          required
-         pattern=".+@.+\.nl"
+         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
          name="email"
          id="inputEmail"
          class="form-control"
          [(ngModel)]="newContact.email"
          #email="ngModel">
+
+  <div *ngIf="firstname.errors?.required" >Please enter your firstname </div>
+  <div *ngIf="surname.errors?.required" >Please enter your surname </div>
+  <div *ngIf="email.errors?.required" >Please enter your e-mail address </div>
+
   <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>
 </form>
-</div>
+
 
 
 

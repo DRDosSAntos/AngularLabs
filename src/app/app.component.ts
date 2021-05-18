@@ -10,7 +10,7 @@ export class AppComponent {
   name: string;
 
   constructor() {
-    this.name = 'world!';
+    this.name = 'Human!';
   }
 
   contacts: Contact[] = [
