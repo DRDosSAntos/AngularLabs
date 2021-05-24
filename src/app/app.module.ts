@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {ContactNamePipe} from './pipes/contact-name.pipe';
 import { ScopetestComponent } from './scopetest/scopetest.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

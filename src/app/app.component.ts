@@ -1,18 +1,21 @@
 import {Contact} from './models/contact';
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {ContactService} from './services/contact.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   name: string;
+  contacts: Contact[];
+
   // addContactForm: FormGroup;
 
-  constructor() {
+  constructor(private contactService: ContactService) {
     this.name = 'Human!';
     // this.addContactForm = new FormGroup({
     //   firstName: new FormControl('', [Validators.required]),
@@ -21,11 +24,18 @@ export class AppComponent {
     // });
   }
 
-  contacts: Contact[] = [
-    {firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com'},
-    {firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com'},
-    {firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk'}
-  ];
+  ngOnInit(): void {
+    this.contactService.contactsDataUpdated$
+      .subscribe(c => {
+        this.contacts = c;
+      });
+
+    this.contactService.getContacts();
+  }
+}
+
+
+
   // newContact = {} as Contact;
 
   // tslint:disable-next-line:typedef
@@ -33,11 +43,10 @@ export class AppComponent {
   //   this.contacts.push(this.addContactForm.value);
   //   console.log('Submitted value:', this.addContactForm.value);
   // }
-  // tslint:disable-next-line:typedef
-  addContact($event: Contact) {
-    this.contacts.push($event);
-  }
-}
+//   deleteContact(id: number) {
+//
+//   }
+// }
 
 
 

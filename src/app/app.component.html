@@ -15,12 +15,12 @@
     <td>{{contact.email}}</td>
     <td>
       <button class="btn">Edit</button>
-      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-danger" (click)="deleteContact()">Delete</button>
     </td>
   </tr>
 </table>
 
-<app-contact-form (add)="addContact($event)"></app-contact-form>
+<app-contact-form></app-contact-form>
 
 <!--<form (ngSubmit)="addContact()" [formGroup]="addContactForm">-->
 <!--  <label for="inputFirstName">Firstname:</label>-->
